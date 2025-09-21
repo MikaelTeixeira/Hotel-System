@@ -19,7 +19,7 @@ namespace HotelSystem.Models
 
         public int Number { get; }
         public string Type { get; private set; }
-        
+
         public decimal PriceDay { get; private set; }
 
         public bool Status { get; set; }
@@ -35,5 +35,33 @@ namespace HotelSystem.Models
 
             return false;
         }
+
+        public bool UpdateStatus(bool newStatus)
+        {
+            if (Status != newStatus)
+            {
+                Status = newStatus;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool UpdateType(Hotel nomeHotel, string newType)
+        {
+            foreach (var suite in nomeHotel.SuitesTypes)
+            {
+                if (string.Equals(suite, newType, StringComparison.OrdinalIgnoreCase))
+                {
+                    Type = newType;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        
     }
+    
 }
