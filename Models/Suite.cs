@@ -7,11 +7,11 @@ namespace HotelSystem.Models
 {
     public class Suite
     {
-        public Suite(int number, string type, decimal pricePerDay)
+        public Suite(int number, string type, decimal priceDay)
         {
             this.Number = number;
             this.Type = type;
-            this.PriceDay = pricePerDay;
+            this.PriceDay = priceDay;
         }
 
         public Suite()
