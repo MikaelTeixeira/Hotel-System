@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sistema_de_Hotel.Models
+namespace HotelSystem.Models
 {
     public class Guest
     {

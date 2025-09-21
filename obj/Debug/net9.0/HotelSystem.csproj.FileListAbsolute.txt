@@ -1,0 +1,15 @@
+C:\Documentos\Estudando C Sharp\HotelSystem\bin\Debug\net9.0\HotelSystem.exe
+C:\Documentos\Estudando C Sharp\HotelSystem\bin\Debug\net9.0\HotelSystem.deps.json
+C:\Documentos\Estudando C Sharp\HotelSystem\bin\Debug\net9.0\HotelSystem.runtimeconfig.json
+C:\Documentos\Estudando C Sharp\HotelSystem\bin\Debug\net9.0\HotelSystem.dll
+C:\Documentos\Estudando C Sharp\HotelSystem\bin\Debug\net9.0\HotelSystem.pdb
+C:\Documentos\Estudando C Sharp\HotelSystem\obj\Debug\net9.0\HotelSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Documentos\Estudando C Sharp\HotelSystem\obj\Debug\net9.0\HotelSystem.AssemblyInfoInputs.cache
+C:\Documentos\Estudando C Sharp\HotelSystem\obj\Debug\net9.0\HotelSystem.AssemblyInfo.cs
+C:\Documentos\Estudando C Sharp\HotelSystem\obj\Debug\net9.0\HotelSystem.csproj.CoreCompileInputs.cache
+C:\Documentos\Estudando C Sharp\HotelSystem\obj\Debug\net9.0\HotelSystem.sourcelink.json
+C:\Documentos\Estudando C Sharp\HotelSystem\obj\Debug\net9.0\HotelSystem.dll
+C:\Documentos\Estudando C Sharp\HotelSystem\obj\Debug\net9.0\refint\HotelSystem.dll
+C:\Documentos\Estudando C Sharp\HotelSystem\obj\Debug\net9.0\HotelSystem.pdb
+C:\Documentos\Estudando C Sharp\HotelSystem\obj\Debug\net9.0\HotelSystem.genruntimeconfig.cache
+C:\Documentos\Estudando C Sharp\HotelSystem\obj\Debug\net9.0\ref\HotelSystem.dll
