@@ -1,0 +1,13 @@
+O que adicionar em cada classe:
+
+Guest
+
+- Atributo Name string
+- Atributo group string list 
+- Atributo Money decimal
+- Atributo Suites Suites list
+- Atributos Checkin e Checkout (menor checkin e maior checkout da lista de suites)
+
+
+- Método adicionar guest
+- Método remover Guest
