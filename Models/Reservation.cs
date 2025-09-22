@@ -27,6 +27,7 @@ namespace HotelSystem.Models
             CheckOut = checkOut;
         }
 
+
         public bool UpdateReservationTime(int days)
         {
 
@@ -49,6 +50,7 @@ namespace HotelSystem.Models
                 return true;
             }
         }
+
         
     }
 }
