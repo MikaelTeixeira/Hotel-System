@@ -54,6 +54,7 @@ namespace HotelSystem.Models
                 if (string.Equals(suite, newType, StringComparison.OrdinalIgnoreCase))
                 {
                     Type = newType;
+                    
                     return true;
                 }
             }
@@ -61,7 +62,16 @@ namespace HotelSystem.Models
             return false;
         }
 
+        public bool TypeValidate(string type, Hotel hotel)
+        {
+            if (hotel.SuitesTypes.Contains(type))
+            {
+                return true;
+            }
+            Console.WriteLine("\nType not found!");
+            return false;
+        }
+
         
     }
-    
 }

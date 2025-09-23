@@ -7,7 +7,7 @@ namespace HotelSystem.Models
 {
     public class Utils
     {
-        public static int IntValidate(string input)
+        public int IntValidate(string input)
         {
             int number = 0;
 

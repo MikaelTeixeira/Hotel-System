@@ -21,5 +21,18 @@ namespace HotelSystem.Models
                 Suites.Add(suite);
             }
         }
+
+        public void RemoveSuites(Suite suite)
+        {
+
+            if (Suites.Contains(suite))
+            {
+                Console.WriteLine($"\nSuite {suite.Number} was removed from your reservation.");
+                Suites.Remove(suite);
+            }
+            
+            Console.WriteLine($"\nSuite {suite.Number} not found in your reservation.");
+         }
+
+        }
     }
-}
