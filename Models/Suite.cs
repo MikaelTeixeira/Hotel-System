@@ -62,6 +62,46 @@ namespace HotelSystem.Models
             return false;
         }
 
+        public bool ValidateNumber(int number, Hotel hotel)
+        {
+
+            string numberString = number.ToString();
+
+            if (numberString.Length != 3)
+            {
+                Console.WriteLine("\nThe Suite number must have 3 digits.");
+                return false;
+            }
+
+            else if (numberString[2] > '9' || numberString[2] < 1)
+            {
+                Console.WriteLine("\nThe suite number is out of range. It must finish between 1 and 9.");
+                return false;
+            }
+
+            foreach (var suite in hotel.Suites)
+            {
+                if (suite.Number == number)
+                {
+                    Console.WriteLine("\nThis suite number is alredy registered.");
+                    return false;
+                    
+                }
+            }
+            return true;
+        }
+
+        public bool ValidatePrice(decimal price)
+        {
+            if (price <= 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+    }
+    
 
 
         // ATRIBUTES VALIDATIONS \\
