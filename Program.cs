@@ -178,11 +178,67 @@ do
 
                             case 4:
                                 hotel.ShowSuitesTypes();
+
                                 break;
                             case 5:
-                                hotel.AddSuitesType();
+
+                                bool typeConfirmation = false;
+                                string newSuiteType = "";
+                                do
+                                {
+
+                                    Console.WriteLine("\nPlease, type the new suite type: ");
+                                    newSuiteType = Console.ReadLine();
+
+                                    Console.WriteLine("\nAre you sure you want to add this type? (y/n)");
+                                    string newTypeConfirmation = Console.ReadLine();
+
+                                    if (newTypeConfirmation.ToLower() == "y")
+                                    {
+                                        typeConfirmation = true;
+                                    }
+                                    else if (newTypeConfirmation.ToLower() == "n")
+                                    {
+                                        continue;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nYou didin't type 'y' or 'n. You will be asked again about the suiite type name.");
+                                    }
+
+                                } while (typeConfirmation == false);
+                                
+                                hotel.AddSuitesType(newSuiteType);
                                 break;
+
                             case 6:
+
+                                Console.WriteLine("\nAll suites types: ");
+                                int count = 1;
+
+                                foreach (string type in hotel.SuitesTypes)
+                                {
+                                    Console.WriteLine($"\n[{count}] -{type}");
+                                    count++;
+                                }
+
+                                bool typeRemoved = false;
+
+                                do
+                                {
+                                    Console.WriteLine("\nSelect the suite type that you want to remove: ");
+                                    string typeToRemove = Console.ReadLine();
+                                    int index = int.TryParse(typeToRemove, out index) ? index : -1;
+
+                                    if (index <= hotel.SuitesTypes.Count && index >= 0)
+                                    {
+                                        hotel.SuitesTypes.RemoveAt(index - 1);
+                                        typeRemoved = true;
+                                    }
+
+                                } while (typeRemoved == false);
+
+
                                 hotel.RemoveSuiteType();
                                 break;
                             case 7:

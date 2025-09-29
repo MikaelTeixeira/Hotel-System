@@ -193,7 +193,9 @@ namespace HotelSystem.Models
 
         public void ShowSuitesTypes() //Running
         {
-            foreach(var item in SuitesTypes)
+
+            Console.Write("\nSuites Types:\n");
+            foreach (var item in SuitesTypes)
             {
                 Console.WriteLine(item);
             }
