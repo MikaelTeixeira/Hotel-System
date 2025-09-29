@@ -99,11 +99,7 @@ namespace HotelSystem.Models
             }
             return true;
         }
-
-    }
-    
-
-
+        
         // ATRIBUTES VALIDATIONS \\
 
         public static bool TypeValidate(string type, Hotel hotel)
@@ -151,5 +147,6 @@ namespace HotelSystem.Models
                     return 0m;
             }
         }
+
     }
 }
