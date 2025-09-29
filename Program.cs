@@ -1,4 +1,5 @@
 ﻿using HotelSystem.Models;
+using Microsoft.VisualBasic;
 
 Hotel hotel = new Hotel("Mornigstar Hotel");
 
@@ -67,13 +68,80 @@ do
                         switch (secondDecision)
                         {
                             case 1:
-                                hotel.ShowSuites();
-                                continue;
+                                {
+                                    hotel.ShowSuites();
+                                    continue;
+                                }
                             case 2:
-                                hotel.AddSuite();
-                                break;
+                                {
+                                    bool isNumberValid = false;
+                                    bool isTypeValid = false;
+                                    string typeAnswer = "";
+                                    int number = 0;
+
+                                    //Number block
+                                    do
+                                    {
+                                        Console.WriteLine("\nPlease, type the new suite Number: ");
+
+                                        string numberAnswer = Console.ReadLine();
+
+                                        number = int.TryParse(numberAnswer, out number) ? number : 0;
+
+                                        if (Suite.NumberValidate(number, hotel))
+                                        {
+                                            isNumberValid = true;
+                                        }
+
+                                    } while (isNumberValid == false);
+
+                                    //Type block
+                                    do
+                                    {
+                                        Console.WriteLine("\nPlease, type the new suite type: ");
+                                        typeAnswer = Console.ReadLine();
+
+                                        if (Suite.TypeValidate(typeAnswer, hotel))
+                                        {
+                                            isTypeValid = true;
+                                        }
+
+                                    } while (isTypeValid == false);
+
+                                    decimal newSuitePrice = Suite.PriceDefine(typeAnswer);
+
+                                    Suite suite = new Suite(number, typeAnswer, newSuitePrice);
+
+                                    hotel.AddSuite(suite);
+
+                                    Console.WriteLine($"\nSuite number {suite.Number} was added in hotel.");
+                                    break;
+                                }
+
                             case 3:
-                                hotel.RemoveSuite();
+                                bool suiteRemoved = false;
+
+                                do
+                                {
+                                    Console.WriteLine("\nPlease, type the suite number that you want to remove: ");
+                                    string strNumber = Console.ReadLine();
+                                    int suiteNumber = int.TryParse(strNumber, out suiteNumber) ? suiteNumber : 0;
+
+                                    foreach (Suite suite in hotel.Suites)
+                                    {
+                                        if (suite.Number == suiteNumber)
+                                        {
+                                            hotel.RemoveSuite(suite);
+                                            Console.WriteLine($"\nThe suite number {suiteNumber} was removed from hotel.");
+                                            break;
+                                        }
+                                    }
+                                    if (suiteRemoved == false)
+                                    {
+                                        Console.WriteLine("\nSuite not found!\n");
+                                    }
+                                    
+                                } while (suiteRemoved == false);
                                 break;
                             case 4:
                                 hotel.ShowSuitesTypes();

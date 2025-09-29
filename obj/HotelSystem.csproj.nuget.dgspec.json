@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mikae\\OneDrive\\Documentos\\PROGRAMAÇÃO\\PROJETOS COM DJANGO\\Hotel-System\\HotelSystem.csproj": {}
+    "C:\\Documentos\\Estudando C Sharp\\HotelSystem\\HotelSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mikae\\OneDrive\\Documentos\\PROGRAMAÇÃO\\PROJETOS COM DJANGO\\Hotel-System\\HotelSystem.csproj": {
+    "C:\\Documentos\\Estudando C Sharp\\HotelSystem\\HotelSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mikae\\OneDrive\\Documentos\\PROGRAMAÇÃO\\PROJETOS COM DJANGO\\Hotel-System\\HotelSystem.csproj",
+        "projectUniqueName": "C:\\Documentos\\Estudando C Sharp\\HotelSystem\\HotelSystem.csproj",
         "projectName": "HotelSystem",
-        "projectPath": "C:\\Users\\mikae\\OneDrive\\Documentos\\PROGRAMAÇÃO\\PROJETOS COM DJANGO\\Hotel-System\\HotelSystem.csproj",
+        "projectPath": "C:\\Documentos\\Estudando C Sharp\\HotelSystem\\HotelSystem.csproj",
         "packagesPath": "C:\\Users\\mikae\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mikae\\OneDrive\\Documentos\\PROGRAMAÇÃO\\PROJETOS COM DJANGO\\Hotel-System\\obj\\",
+        "outputPath": "C:\\Documentos\\Estudando C Sharp\\HotelSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mikae\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -54,7 +54,7 @@ namespace HotelSystem.Models
                 if (string.Equals(suite, newType, StringComparison.OrdinalIgnoreCase))
                 {
                     Type = newType;
-                    
+
                     return true;
                 }
             }
@@ -62,16 +62,54 @@ namespace HotelSystem.Models
             return false;
         }
 
-        public bool TypeValidate(string type, Hotel hotel)
+
+
+        // ATRIBUTES VALIDATIONS \\
+
+        public static bool TypeValidate(string type, Hotel hotel)
         {
             if (hotel.SuitesTypes.Contains(type))
             {
                 return true;
             }
-            Console.WriteLine("\nType not found!");
+            Console.WriteLine("\nType not found!\nPlease, select a valid type or add a new one.");
             return false;
         }
 
-        
+        public static bool NumberValidate(int number, Hotel hotel)
+        {
+            foreach (var suite in hotel.Suites)
+            {
+
+                if (number.ToString().EndsWith("0") || number.ToString().EndsWith("9") || number < 0 || number > 908)
+                {
+                    Console.WriteLine("\nThis number is not allowed!");
+                    Console.WriteLine("\nSuites number must end with a number between 1 and 8 and can't be bigger or smaller than 3 digits.\nExamples: 101, 208, 307....");
+                    return false;
+                }
+
+                if (suite.Number == number)
+                {
+                    Console.WriteLine("\nThis suite already exists!");
+                    return false;
+                }
+            }
+                return true;
+        }
+
+        public static decimal PriceDefine(string type)
+        {
+            switch (type)
+            {
+                case "Standard":
+                    return 100m;
+                case "Premium":
+                    return 150m;
+                case "Deluxe":
+                    return 200m;
+                default:
+                    return 0m;
+            }
+        }
     }
 }
