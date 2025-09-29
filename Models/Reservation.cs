@@ -18,6 +18,12 @@ namespace HotelSystem.Models
 
         public DateTime CheckOut { get; private set; }
 
+        public decimal TotalPrice()
+        {
+            decimal price = Suite.PriceDay * (CheckOut - CheckIn).Days;
+            return price;
+        }
+
         public Reservation(int id, Suite suite, Guest guest, DateTime checkIn, DateTime checkOut)
         {
             Id = id;

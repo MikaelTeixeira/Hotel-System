@@ -119,30 +119,63 @@ do
                                 }
 
                             case 3:
-                                bool suiteRemoved = false;
-
-                                do
+                            
                                 {
-                                    Console.WriteLine("\nPlease, type the suite number that you want to remove: ");
-                                    string strNumber = Console.ReadLine();
-                                    int suiteNumber = int.TryParse(strNumber, out suiteNumber) ? suiteNumber : 0;
-
-                                    foreach (Suite suite in hotel.Suites)
+                                    bool suiteRemoved = false;
+                                    bool cantRemove = false;
+                                    bool exit = false;
+                                    do
                                     {
-                                        if (suite.Number == suiteNumber)
+                                        Console.WriteLine("\nPlease, type the suite number that you want to remove or type 'exit' to return: ");
+                                        string strNumber = Console.ReadLine();
+
+                                        if (strNumber.ToLower() == "exit")
                                         {
-                                            hotel.RemoveSuite(suite);
-                                            Console.WriteLine($"\nThe suite number {suiteNumber} was removed from hotel.");
                                             break;
                                         }
-                                    }
-                                    if (suiteRemoved == false)
-                                    {
-                                        Console.WriteLine("\nSuite not found!\n");
-                                    }
-                                    
-                                } while (suiteRemoved == false);
-                                break;
+
+                                        int suiteNumber;
+
+                                        if (!int.TryParse(strNumber, out suiteNumber))
+
+                                        {
+                                            suiteNumber = 0;
+                                        }
+
+                                        foreach (Suite suite in hotel.Suites)
+                                        {
+                                            if (suite.Number == suiteNumber)
+                                            {
+                                                if (suite.Status == true)
+                                                {
+                                                    Console.WriteLine("\nThis suite is currently reserved. Please, try delete this suite when the reservation is over.");
+                                                    cantRemove = true;
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    hotel.RemoveSuite(suite);
+                                                    suiteRemoved = true;
+                                                    Console.WriteLine($"\nThe suite number {suiteNumber} was removed from hotel.");
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        if (suiteRemoved == false && cantRemove == false)
+                                        {
+                                            Console.WriteLine("\nSuite not found!\n");
+                                        }
+
+                                        if (suiteRemoved == true || cantRemove == true)
+                                        {
+                                            exit = true;
+                                        }
+
+                                    } while (exit == false);
+                                    break;
+                                }
+
+
                             case 4:
                                 hotel.ShowSuitesTypes();
                                 break;
