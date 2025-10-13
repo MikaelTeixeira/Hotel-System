@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
+using HotelSystem.Models;
 
 namespace HotelSystem.Models
 {
@@ -200,6 +202,78 @@ namespace HotelSystem.Models
                 Console.WriteLine(item);
             }
         }
+
+        public void ShowReservations()
+        {
+            foreach (var item in Reservations)
+            {
+                Console.WriteLine($"{item.Suite.Number} - remaining days: {item.RemainingDays}");
+            }
+        }
+    
+        public Guest CreateGuest()
+        {
+            Guest guest = new Guest();
+            bool createdName = false;
+            bool createdCPF = false;
+            bool createdMoney = false;
+
+            do
+            {
+                Console.WriteLine("\nPlease, type your name: ");
+                guest.Name = Console.ReadLine();
+
+                bool nameCheck = Utils.onlyLetters(guest.Name);
+
+                if (nameCheck == true)
+                {
+                    createdName = true;
+                }
+                else
+                {
+                    Console.WriteLine("\nPlease, type a valid name.");
+                    continue;
+                }
+
+            } while (createdName == false);
+
+            do
+            {
+                Console.WriteLine("\nPlease, type your CPF: ");
+                guest.CPF = Console.ReadLine();
+
+                if (Utils.checkCPF(guest.CPF) == true)
+                {
+                    createdCPF = true;
+                }
+                else
+                {
+                    Console.WriteLine("\nPlease, type a valid CPF.");
+                    continue;
+                }
+
+            } while (createdCPF == false);
+
+            do
+            {
+                Console.WriteLine("\nPlease, type how much money you have: ");
+                guest.Money = Convert.ToDecimal(Console.ReadLine());
+
+                if (Utils.checkMoney(guest.Money) == true)
+                {
+                    createdMoney = true;
+                }
+                else
+                {
+                    Console.WriteLine("\nPlease, type a valid amount of money.");
+                    continue;
+                }
+
+            } while (createdMoney == false);
+                       
+            return guest;
+        }
+
     }
 
 }

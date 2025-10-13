@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,6 +18,9 @@ namespace HotelSystem.Models
         public DateTime CheckIn { get; private set; }
 
         public DateTime CheckOut { get; private set; }
+
+        public int RemainingDays => (CheckOut - DateTime.Now).Days;
+
 
         public decimal TotalPrice()
         {

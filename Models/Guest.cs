@@ -11,5 +11,6 @@ namespace HotelSystem.Models
         public string CPF { get; set; }
         public decimal Money { get; set; }
 
-        }
+    }
+        
     }
