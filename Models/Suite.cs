@@ -15,7 +15,7 @@ namespace HotelSystem.Models
         }
 
         public Suite()
-        { Status = true; }
+        { Status = false; }
 
         public int Number { get; }
         public string Type { get; private set; }
@@ -47,20 +47,18 @@ namespace HotelSystem.Models
             return false;
         }
 
-        public bool UpdateType(Hotel nomeHotel, string newType)
+        public bool UpdateType(Hotel hotel, string newType)
         {
-            foreach (var suite in nomeHotel.SuitesTypes)
+            if (hotel.SuitesTypes.ContainsKey(newType)) // Dictionary<string, decimal>
             {
-                if (string.Equals(suite, newType, StringComparison.OrdinalIgnoreCase))
-                {
-                    Type = newType;
-
-                    return true;
-                }
+                Type = newType;
+                return true;
             }
 
+            Console.WriteLine("\nType not found!\nPlease, select a valid type or add a new one.");
             return false;
         }
+
 
         public bool ValidateNumber(int number, Hotel hotel)
         {
@@ -104,13 +102,14 @@ namespace HotelSystem.Models
 
         public static bool TypeValidate(string type, Hotel hotel)
         {
-            if (hotel.SuitesTypes.Contains(type))
+            if (hotel.SuitesTypes.ContainsKey(type)) // <- troque Contains por ContainsKey
             {
                 return true;
             }
             Console.WriteLine("\nType not found!\nPlease, select a valid type or add a new one.");
             return false;
         }
+
 
         public static bool NumberValidate(int number, Hotel hotel)
         {

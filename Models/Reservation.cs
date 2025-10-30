@@ -9,6 +9,17 @@ namespace HotelSystem.Models
 {
     public class Reservation
     {
+
+        public Reservation(int id, Suite suite, Guest guest, DateTime checkIn, DateTime checkOut, decimal totalPrice)
+        {
+            Id = id;
+            Suite = suite;
+            Guest = guest;
+            CheckIn = checkIn;
+            CheckOut = checkOut;
+            TotalPrice = totalPrice;
+        }
+
         public int Id { get; }
 
         public Suite Suite { get; private set; }
@@ -19,14 +30,10 @@ namespace HotelSystem.Models
 
         public DateTime CheckOut { get; private set; }
 
+        public Decimal TotalPrice { get; private set; }
+
         public int RemainingDays => (CheckOut - DateTime.Now).Days;
 
-
-        public decimal TotalPrice()
-        {
-            decimal price = Suite.PriceDay * (CheckOut - CheckIn).Days;
-            return price;
-        }
 
         public Reservation(int id, Suite suite, Guest guest, DateTime checkIn, DateTime checkOut)
         {

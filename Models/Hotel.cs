@@ -12,13 +12,15 @@ namespace HotelSystem.Models
 
         public Hotel(string name)
         {
-            Name = name;
-            SuitesTypes = new List<string> { "Standard", "Premium", "Deluxe" };
+            this.Name = name;
+            this.SuitesTypes = new Dictionary<string, decimal>{{"Standard", 100m}, {"Premium", 150m}, {"Deluxe", 200m}};
             SeedSuites();
+            this.Reservations = new List<Reservation>();
+            this.Guests = new List<Guest>();     
         }
 
         public string Name { get; set; }
-        public List<string> SuitesTypes { get; private set; }
+        public Dictionary<string, decimal> SuitesTypes { get; private set; }
 
         public List<Suite> Suites { get; set; }
 
@@ -107,30 +109,23 @@ namespace HotelSystem.Models
             return false;
         }
 
-        public bool AddSuitesType(string type)
+        public bool AddSuitesType(string name, decimal price)
         {
-            foreach (var item in SuitesTypes)
+            if (SuitesTypes.ContainsKey(name))
             {
-                if (item == type)
-                {
-                    return false;
-                }
+                Console.WriteLine("\nThis suite type already exists.");
+                return false;
             }
-            SuitesTypes.Add(type);
+            else
+            {
+            SuitesTypes.Add(name, price);
             return true;
+            }
         }
 
-        public bool RemoveSuiteType(string type)
+        public bool RemoveSuiteType(string name)
         {
-            foreach (var item in SuitesTypes)
-            {
-                if (item == type)
-                {
-                    SuitesTypes.Remove(type);
-                    return true;
-                }
-            }
-            return false;
+            return SuitesTypes.Remove(name);
         }
 
         private void SeedSuites() //Running
@@ -162,6 +157,15 @@ namespace HotelSystem.Models
                         break;
                     case 5:
                         suiteType = "Deluxe";
+                        break;
+                }
+                switch (suiteType)
+                {
+                    case "Standard":
+                        break;
+                    case "Premium":
+                        break;
+                    case "Deluxe":
                         break;
                 }
 
@@ -205,9 +209,20 @@ namespace HotelSystem.Models
 
         public void ShowReservations()
         {
+            if (Reservations.Count == 0)
+            {
+
+                Console.WriteLine("\nThere are no reservations.");
+
+                return;
+            }
+
+            int count = 1;
+
             foreach (var item in Reservations)
             {
-                Console.WriteLine($"{item.Suite.Number} - remaining days: {item.RemainingDays}");
+                Console.WriteLine($"[{count}]Suite Number: {item.Suite.Number} - remaining days: {item.RemainingDays}");
+                count++;
             }
         }
     
