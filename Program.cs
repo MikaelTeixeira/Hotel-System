@@ -8,7 +8,7 @@ bool finish = false;
 do
 {
     int firstDecision = 0;
-    
+
     do
     {
 
@@ -181,14 +181,14 @@ do
                                     hotel.ShowSuitesTypes();
 
                                     break;
-                                
+
                                 case 5: //FEITO
 
                                     bool typeConfirmation = false;
                                     bool priceConfirmation = false;
                                     string suiteTypeName = "";
                                     decimal suiteTypePrice = 0;
-            
+
                                     do
                                     {
 
@@ -257,14 +257,14 @@ do
 
                                         if (index <= hotel.SuitesTypes.Count && index >= 0)
                                         {
-                                            hotel.RemoveSuiteType(hotel.SuitesTypes.ElementAt(index - 1 ).Key);
+                                            hotel.RemoveSuiteType(hotel.SuitesTypes.ElementAt(index - 1).Key);
                                             Console.WriteLine("\nThe suite type was removed.");
                                             typeRemoved = true;
                                         }
 
                                     } while (typeRemoved == false);
                                     break;
-                                
+
                                 case 7: //FEITO
                                     inSubmenu = false;
                                     break;
@@ -430,10 +430,150 @@ do
                 break;
 
             }
-        
-        case 3:
-            continue;
+
+        case 3: //feito
+            {
+                bool inSubMenu = true;
+
+                while (inSubMenu)
+                {
+                    int decision = 0;
+
+                    Console.WriteLine("\nWhat do you want to do?");
+                    Console.WriteLine("[1] See Guests" +
+                                    "\n[2] Add Guest" +
+                                    "\n[3] Remove Guest" +
+                                    "\n[4] Return.");
+
+                    string decisionString = Console.ReadLine();
+
+                    if (int.TryParse(decisionString, out decision))
+                    {
+                        switch (decision)
+                        {
+                            case 1:
+                                hotel.ShowGuests();
+                                break;
+
+                            case 2:
+                                Guest newGuest = hotel.CreateGuest();
+
+                                hotel.AddGuest(newGuest);
+                                break;
+
+                            case 3:
+                                {
+                                    bool guestRemoved = false;
+                                    do
+                                    {
+
+
+                                        hotel.ShowGuests();
+
+                                        Console.WriteLine("\nNow, select the guest that you want to remove by index:");
+                                        string guestToRemove = Console.ReadLine();
+
+                                        int index = int.TryParse(guestToRemove, out index) ? index : -1;
+
+                                        if (index <= hotel.Guests.Count & index >= 0)
+                                        {
+                                            Guest guest = hotel.Guests.ElementAt(index - 1);
+                                            hotel.RemoveGuest(guest);
+
+                                            Console.WriteLine("\nThe guest was removed.");
+                                            guestRemoved = true;
+                                        }
+                                    } while (guestRemoved == false);
+
+                                    break;
+
+                                }
+
+
+                            case 4:
+                                inSubMenu = false;
+                                break;
+
+                            default:
+                                Console.WriteLine("\nPlease, type a valid number.");
+                                break;
+                        }
+                    }
+
+                }
+            }
+            ;
+            break;
+
         case 4:
-            continue;
+            {
+                bool inSubMenu = true;
+                do
+                {
+
+                    Console.WriteLine("\nNow, select what you want to do: ");
+                    Console.WriteLine("\n[1] See informations about the Hotel" +
+                    "\n[2] Change the name of the Hotel" +
+                    "\n[3] Exit.\n");
+                    string strDecision = Console.ReadLine();
+
+                    int decision = int.TryParse(strDecision, out decision) ? decision : -1;
+
+                    if (decision <= 0 || decision > 3)
+                    {
+                        Console.WriteLine("\nPlease, type a valid number (a number between 1 and 3).");
+                        continue;
+                    }
+
+                    switch (decision)
+                    {
+
+                        case 1:
+                            hotel.ShowInformations();
+                            break;
+
+                        case 2:
+                            Console.WriteLine("\nAlright, please, type the new name of the Hotel: ");
+                            string hotelName = Console.ReadLine();
+
+                            bool verification = false;
+
+                            do
+                            {
+                                Console.WriteLine($"\nAre you sure that you want change the hotel name to '{hotelName}'? (s/n)");
+                                string confirmation = Console.ReadLine();
+
+                                if (confirmation == "s" || confirmation == "S")
+                                {
+                                    Console.WriteLine("\nOkay, the hotel name was changed.");
+                                    hotel.ChangeName(hotelName);
+                                    verification = true;
+                                }
+
+                                else if (confirmation == "n" || confirmation == "N")
+                                {
+                                    Console.WriteLine("\nThe hotel name was not changed.");
+                                    verification = true;
+                                }
+                            } while (verification == false);
+
+                            break;
+
+                        case 3:
+                            inSubMenu = false;
+                            break;
+                    }
+                } while (inSubMenu);
+                
+                break;
+            }
+            
+
+        case 5:
+            finish = true;
+            break;
     }
 } while (!finish);
+
+
+Console.WriteLine("\nThanks for using our system!");

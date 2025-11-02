@@ -13,10 +13,10 @@ namespace HotelSystem.Models
         public Hotel(string name)
         {
             this.Name = name;
-            this.SuitesTypes = new Dictionary<string, decimal>{{"Standard", 100m}, {"Premium", 150m}, {"Deluxe", 200m}};
+            this.SuitesTypes = new Dictionary<string, decimal> { { "Standard", 100m }, { "Premium", 150m }, { "Deluxe", 200m } };
             SeedSuites();
             this.Reservations = new List<Reservation>();
-            this.Guests = new List<Guest>();     
+            this.Guests = new List<Guest>();
         }
 
         public string Name { get; set; }
@@ -88,11 +88,13 @@ namespace HotelSystem.Models
             {
                 if (people.CPF == guest.CPF)
                 {
+                    Console.WriteLine("\nThis guest already exists.");
                     return false;
                 }
             }
 
             Guests.Add(guest);
+            Console.WriteLine("\nGuest added.");
             return true;
         }
 
@@ -118,8 +120,8 @@ namespace HotelSystem.Models
             }
             else
             {
-            SuitesTypes.Add(name, price);
-            return true;
+                SuitesTypes.Add(name, price);
+                return true;
             }
         }
 
@@ -225,7 +227,7 @@ namespace HotelSystem.Models
                 count++;
             }
         }
-    
+
         public Guest CreateGuest()
         {
             Guest guest = new Guest();
@@ -285,10 +287,66 @@ namespace HotelSystem.Models
                 }
 
             } while (createdMoney == false);
-                       
+
             return guest;
         }
 
+        public Reservation GetReservation(string guestCPF)
+        {
+            foreach (Reservation reservation in Reservations)
+            {
+                if (reservation.Guest.CPF == guestCPF)
+                {
+                    return reservation;
+                }
+            }
+
+            Console.WriteLine("\nReservation not found");
+            return null;
+        }
+
+        public void ShowGuests()
+        {
+
+            if (this.Guests.Count == 0)
+            {
+                Console.WriteLine("\nThere are no guests.");
+                return;
+            }
+            int count = 1;
+            foreach (Guest guest in Guests)
+            {
+                Reservation reservation = GetReservation(guest.CPF);
+                Console.WriteLine("===============================================================");
+                Console.WriteLine($"\nGUEST NUMBER {count}");
+                count++;
+                Console.WriteLine($"\nName: {guest.Name}" +
+                $"\nSuite: {reservation.Suite.Number}" +
+                $"\nRemaining days: {reservation.RemainingDays}");
+                Console.WriteLine("===============================================================");
+            }
+            return;
+        }
+
+        public void ShowInformations()
+        {
+            int numberOfSuites = this.Suites.Count;
+            int numberOfSuiteTypes = this.SuitesTypes.Count;
+
+
+            Console.WriteLine("\nHotel informations:\n");
+            Console.WriteLine($"\nHotel name: {this.Name}");
+            Console.WriteLine($"\n: Number of suites: {numberOfSuites}");
+            Console.WriteLine($"\n: Number of suite types: {numberOfSuiteTypes}");
+        }
+
+        public bool ChangeName(string name)
+        {
+            this.Name = name;
+            return true;
+        }
+
+        
     }
 
 }
