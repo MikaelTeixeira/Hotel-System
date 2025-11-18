@@ -11,7 +11,7 @@ It registers guests, manages suites, creates reservations, calculates total stay
 
 ## 🌐 Language Index
 - <img src="https://twemoji.maxcdn.com/2/svg/1f1fa-1f1f8.svg" width="20" /> **English Version** → (you are here)
-- <img src="https://twemoji.maxcdn.com/2/svg/1f1e7-1f1f7.svg" width="20" /> **Versão em Português** → [README-ptBR.md](README-ptBR.md)
+- <img src="https://twemoji.maxcdn.com/2/svg/1f1e7-1f1f7.svg" width="20" /> [**Versão Em Português**](#sistema-de-hotel-em-c)
 
 ---
 ## 📚 Index
@@ -123,7 +123,7 @@ Open a pull request
 ![Licença](https://img.shields.io/badge/licença-nenhuma-lightgrey)
 
 ## 🌐 Índice de Idiomas
-- <img src="https://twemoji.maxcdn.com/2/svg/1f1fa-1f1f8.svg" width="20" /> **English Version** → [README.md](README.md)
+- <img src="https://twemoji.maxcdn.com/2/svg/1f1fa-1f1f8.svg" width="20" /> [**English Version**](#hotel-system-with-c)
 - <img src="https://twemoji.maxcdn.com/2/svg/1f1e7-1f1f7.svg" width="20" /> **Versão em Português** → (você está aqui)
 
 Um sistema de gerenciamento de hotel feito inteiramente em C#.  
