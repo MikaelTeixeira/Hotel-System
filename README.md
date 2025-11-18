@@ -104,7 +104,7 @@ git clone https://github.com/MikaelTeixeira/Hotel-System
 cd Hotel-System
 dotnet run
 ```
-Contributing
+### Contributing
 
 Fork the repository
 
@@ -221,4 +221,14 @@ Guest.cs / Suite.cs / Reservation.cs (dados & regras)
 git clone https://github.com/MikaelTeixeira/Hotel-System
 cd Hotel-System
 dotnet run
+```
 
+### Contribuição
+
+Faça um fork do repositório
+
+Crie uma nova branch
+
+Adicione suas melhorias
+
+Abra um pull request
